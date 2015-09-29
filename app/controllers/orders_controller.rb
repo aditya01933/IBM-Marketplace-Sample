@@ -7,10 +7,12 @@ class OrdersController < ApplicationController
     uri = params[:url]
     urt = AppDirect::Event.retrieve(uri)
     puts urt
-        data={:sucess=> 'true',:message=>'first test',:accountIdentifier=> 'uri.split('/').last'}
+    
+    respond_to do |format|
+      format.xml
+    end     
         
-        render xml: data.to_xml(root: "result") 
-
+   
   end
 
   # GET /orders/1
